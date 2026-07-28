@@ -10,7 +10,6 @@ header('Content-type: text/html; charset=UTF-8');
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title><?php echo $PlanetConfig->getName(); ?></title>
     <?php include(__DIR__.'/head.tpl.php'); ?>
@@ -42,7 +41,8 @@ header('Content-type: text/html; charset=UTF-8');
                             <a href="<?php echo $item->get_permalink(); ?>" title="Go to original place"><?php echo $item->get_title(); ?></a>
                         </h2>
                         <p class="article-info">
-                            <?php echo strip_tags(($item->get_author()? $item->get_author()->get_name() : 'Anonymous')); ?>,
+
+                            <?php echo ($item->get_author()? $item->get_author()->get_name() : 'Anonymous'); ?>,
                             <?php
                             $ago = time() - $item->get_date('U');
                             //echo '<span title="'.Duration::toString($ago).' ago" class="date">'.date('d/m/Y', $item->get_date('U')).'</span>';

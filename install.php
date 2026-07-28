@@ -15,7 +15,7 @@ if (is_installed()) {
 
     // Do no try to use the file of an invalid locale
     if (strstr($_POST['locale'], '..') !== false
-    || !file_exists(__DIR__ . "/app/l10n/${_REQUEST['locale']}.lang")) {
+    || !file_exists(__DIR__ . "/app/l10n/{$_REQUEST['locale']}.lang")) {
         $_POST['locale'] = 'en';
     }
 
@@ -41,11 +41,11 @@ if (is_installed()) {
 } else {
 
     // We start by malking sure we have PHP5 as a base requirement
-    if(version_compare(PHP_VERSION, '5.6.0') >= 0) {
-        $strInstall = installStatus('Server is running at least PHP 5.6', 'OK',true);
+    if(version_compare(PHP_VERSION, '7.4.0') >= 0) {
+        $strInstall = installStatus('Server is running at least PHP 7.4', 'OK',true);
         $strRecommendation = '';
     } else {
-        $strInstall = installStatus('Server is running at least PHP 5.6', 'FAIL',false);
+        $strInstall = installStatus('Server is running at least PHP 7.4', 'FAIL',false);
         $strRecommendation = '<li>Check your server documentation to activate at least PHP 5.6</li>';
     }
 
